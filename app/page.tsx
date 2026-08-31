@@ -31,39 +31,47 @@ export default function HomePage() {
       {/* Hero Section */}
       <section className="relative pt-12 pb-16 px-4 text-center overflow-hidden">
         {/* Background Ambient Glows */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-indigo-600/20 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute top-1/3 left-1/3 w-64 h-64 bg-purple-600/15 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-amber-500/20 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-1/3 left-1/3 w-64 h-64 bg-pink-500/20 rounded-full blur-3xl pointer-events-none" />
 
         <div className="max-w-4xl mx-auto space-y-6 relative z-10">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-indigo-300 text-xs font-semibold backdrop-blur-md">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-400 text-slate-950 font-bold text-xs border border-amber-300 shadow-lg shadow-amber-500/30">
             <Sparkles className="w-3.5 h-3.5" />
-            Experiencias Digitales Interactivas & Unboxing en Tiempo Real
+            🎈 ¡Modo Mágico para Niños, Cumpleaños y Aventuras! 🚀
           </div>
 
-          <h1 className="text-4xl sm:text-6xl font-black font-heading tracking-tight leading-tight">
-            Sorpresas Digitales que <br />
-            <span className="bg-gradient-to-r from-indigo-400 via-purple-300 to-pink-400 bg-clip-text text-transparent">
-              Perduran en el Tiempo
+          <h1 className="text-4xl sm:text-6xl font-black font-kids tracking-tight leading-tight">
+            Sorpresas Mágicas y <br />
+            <span className="bg-gradient-to-r from-amber-300 via-pink-400 to-cyan-300 bg-clip-text text-transparent drop-shadow">
+              Regalos Inolvidables 🎈✨
             </span>
           </h1>
 
-          <p className="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-            Diseña calendarios de adviento, cápsulas del tiempo con temporizador en vivo y tarjetas interactivas. Comparte emociones con un solo enlace seguro, sin descargas ni registros.
+          <p className="text-slate-200 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+            Diseña aventuras de búsqueda del tesoro, calendarios de sorpresas con globos animados y cápsulas mágicas. Comparte con tus hijos, sobrinos y seres queridos en 1 clic.
           </p>
 
+          {/* 3D Balloons Banner Display */}
+          <div className="relative mx-auto max-w-sm rounded-3xl overflow-hidden border-4 border-amber-400/60 shadow-2xl shadow-pink-500/30 my-4 transform hover:scale-105 transition-transform">
+            <img src="/images/kids_party_balloons.jpg" alt="Fiesta de Globos" className="w-full h-48 sm:h-64 object-cover" />
+            <div className="absolute bottom-2 left-2 right-2 bg-slate-950/80 backdrop-blur-md px-3 py-1.5 rounded-xl border border-white/20 text-center">
+              <span className="text-xs font-bold font-kids text-amber-300">🎉 Globos Animados, Música & Confeti Mágico 🚀</span>
+            </div>
+          </div>
+
           {/* Feature Badges */}
-          <div className="flex flex-wrap items-center justify-center gap-6 pt-4 text-xs font-semibold text-slate-300">
-            <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center justify-center gap-6 pt-4 text-xs font-bold text-slate-200 font-kids">
+            <div className="flex items-center gap-2 bg-slate-900/80 px-3 py-1.5 rounded-xl border border-emerald-500/40 text-emerald-300">
               <ShieldCheck className="w-4 h-4 text-emerald-400" />
-              <span>Enlaces Tokenizados Criptográficos</span>
+              <span>Enlaces Tokenizados 100% Seguros</span>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 bg-slate-900/80 px-3 py-1.5 rounded-xl border border-amber-500/40 text-amber-300">
               <Zap className="w-4 h-4 text-amber-400" />
-              <span>Sin Registro para Destinatarios</span>
+              <span>Sin Descargas ni Registros</span>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 bg-slate-900/80 px-3 py-1.5 rounded-xl border border-purple-500/40 text-purple-300">
               <Gift className="w-4 h-4 text-purple-400" />
-              <span>Desempacado & Confeti Animado</span>
+              <span>Sonidos & Globos Animados 🎈</span>
             </div>
           </div>
         </div>

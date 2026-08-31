@@ -133,32 +133,39 @@ export const TimeCapsuleView: React.FC<TimeCapsuleViewProps> = ({
         <button
           type="button"
           onClick={handleAttemptUnlock}
-          className={`relative group mx-auto w-64 h-64 sm:w-80 sm:h-80 rounded-3xl border-2 flex flex-col items-center justify-center p-8 transition-all duration-500 shadow-2xl backdrop-blur-2xl ${
+          className={`relative group mx-auto w-64 h-64 sm:w-80 sm:h-80 rounded-3xl border-4 flex flex-col items-center justify-center p-6 transition-all duration-500 shadow-2xl backdrop-blur-2xl overflow-hidden ${
             unlocked
-              ? 'border-emerald-400 bg-gradient-to-b from-emerald-950/40 via-slate-900 to-indigo-950 shadow-emerald-500/20 ring-4 ring-emerald-500/30 scale-105'
-              : 'border-purple-500/40 bg-gradient-to-b from-purple-950/40 via-slate-900 to-slate-950 hover:border-purple-400 shadow-purple-500/20'
+              ? 'border-yellow-400 bg-gradient-to-b from-amber-950/60 via-slate-900 to-indigo-950 shadow-yellow-500/40 ring-4 ring-yellow-400/50 scale-105'
+              : 'border-purple-500/40 bg-gradient-to-b from-purple-950/40 via-slate-900 to-slate-950 hover:border-amber-400 shadow-purple-500/20'
           }`}
         >
-          <div className="mb-4">
-            {unlocked ? (
-              <div className="p-6 bg-emerald-500/20 text-emerald-400 rounded-full border border-emerald-500/40 animate-bounce">
-                <Unlock className="w-12 h-12" />
-              </div>
-            ) : (
-              <div className="p-6 bg-purple-500/20 text-purple-300 rounded-full border border-purple-500/40 group-hover:scale-110 transition-transform">
-                <Lock className="w-12 h-12" />
-              </div>
-            )}
+          {/* 3D Treasure Chest Illustration */}
+          <div className="absolute inset-0 opacity-40 group-hover:opacity-60 transition-opacity">
+            <img src="/images/kids_treasure_chest.jpg" alt="Baúl Mágico" className="w-full h-full object-cover" />
           </div>
 
-          <h3 className="text-xl font-bold font-heading">
-            {unlocked ? '¡Cápsula Desbloqueada!' : 'Baúl Sellado'}
-          </h3>
-          <p className="text-xs text-slate-400 mt-2 max-w-xs">
-            {unlocked
-              ? 'Haz clic para revelar todos tus recuerdos guardados.'
-              : `Este baúl se abrirá automáticamente el ${formattedDate}.`}
-          </p>
+          <div className="relative z-10 flex flex-col items-center">
+            <div className="mb-3">
+              {unlocked ? (
+                <div className="p-4 bg-yellow-400 text-slate-950 rounded-full border-2 border-yellow-300 animate-bounce shadow-lg shadow-yellow-500/40">
+                  <Unlock className="w-10 h-10" />
+                </div>
+              ) : (
+                <div className="p-4 bg-purple-500/40 text-purple-200 rounded-full border border-purple-400/50 group-hover:scale-110 transition-transform backdrop-blur-md">
+                  <Lock className="w-10 h-10" />
+                </div>
+              )}
+            </div>
+
+            <h3 className="text-xl font-extrabold font-kids text-amber-300 drop-shadow">
+              {unlocked ? '✨ ¡Baúl Mágico Desbloqueado! 🎈' : '🔐 Baúl Mágico Sellado'}
+            </h3>
+            <p className="text-xs text-slate-200 mt-2 max-w-xs font-medium bg-slate-950/80 px-3 py-1.5 rounded-xl border border-white/10">
+              {unlocked
+                ? '¡Haz clic para revelar tus regalos y secretos guardados!'
+                : `Este baúl mágico se abrirá automáticamente el ${formattedDate}.`}
+            </p>
+          </div>
         </button>
       </div>
 

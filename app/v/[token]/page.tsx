@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { AdventGrid } from '@/components/viewer/AdventGrid';
 import { TimeCapsuleView } from '@/components/viewer/TimeCapsuleView';
 import { GreetingCardView } from '@/components/viewer/GreetingCardView';
+import { FloatingBalloons } from '@/components/viewer/FloatingBalloons';
 import { Sparkles, AlertCircle, RefreshCw } from 'lucide-react';
 
 interface ViewerPageProps {
@@ -44,10 +45,10 @@ export default function ExperienceViewerPage({ params }: ViewerPageProps) {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-slate-950 flex flex-col items-center justify-center p-4 text-white">
-        <div className="w-12 h-12 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin mb-4" />
-        <p className="text-slate-400 text-sm font-medium animate-pulse">
-          Desbloqueando experiencia digital...
+      <div className="min-h-screen bg-slate-950 flex flex-col items-center justify-center p-4 text-white font-kids">
+        <div className="w-16 h-16 border-4 border-amber-400 border-t-pink-500 rounded-full animate-spin mb-4 shadow-lg shadow-amber-400/30" />
+        <p className="text-amber-300 text-base font-bold animate-pulse">
+          🎈 ¡Cargando tu Aventura Mágica de Sorpresas! 🚀
         </p>
       </div>
     );
@@ -81,11 +82,12 @@ export default function ExperienceViewerPage({ params }: ViewerPageProps) {
   } else if (data.theme === 'party') {
     themeBg = 'bg-gradient-to-br from-slate-950 via-purple-950 to-slate-950';
   } else if (data.theme === 'kids') {
-    themeBg = 'bg-gradient-to-br from-indigo-950 via-amber-950 via-pink-950 to-cyan-950';
+    themeBg = 'bg-gradient-to-br from-purple-950 via-pink-950 via-indigo-950 to-cyan-950 bg-kids-pattern';
   }
 
   return (
-    <main className={`min-h-screen ${themeBg} text-white transition-colors duration-500`}>
+    <main className={`min-h-screen ${themeBg} text-white transition-colors duration-500 relative overflow-hidden`}>
+      {data.theme === 'kids' && <FloatingBalloons />}
       {data.type === 'ADVENT' && (
         <AdventGrid
           title={data.title}

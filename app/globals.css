@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,400;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,400;1,600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -16,12 +16,43 @@ body {
   overflow-x: hidden;
 }
 
+/* Kids font utility */
+.font-kids {
+  font-family: 'Fredoka', cursive, sans-serif;
+}
+
 /* Custom Glassmorphism styles */
 .glass-panel {
   background: rgba(15, 23, 42, 0.65);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.bg-kids-pattern {
+  background-color: #0f172a;
+  background-image: radial-gradient(#fbbf24 1.5px, transparent 1.5px), radial-gradient(#ec4899 1.5px, #0f172a 1.5px);
+  background-size: 60px 60px;
+  background-position: 0 0, 30px 30px;
+}
+
+/* Floating animation keyframes */
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(4deg); }
+}
+
+@keyframes float-reverse {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(15px) rotate(-4deg); }
+}
+
+.animate-float-slow {
+  animation: float-slow 4s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: float-reverse 5s ease-in-out infinite;
 }
 
 /* Custom scrollbars */

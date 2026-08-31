@@ -129,6 +129,20 @@ export const CreatorWizard: React.FC = () => {
     }
   };
 
+  const handleApplyKidsPreset = () => {
+    setType('ADVENT');
+    setTitle('🚀 Búsqueda del Tesoro Mágico & Sorpresas 🎈');
+    setSenderName('Los Magos de la Casa 🪄');
+    setRecipientName('Mi Campeón / Campeona Favorita ⭐');
+    setTheme('kids');
+    setDaysCount(7);
+    setItems([
+      { dayNumber: 1, title: '¡Día 1: Misión Espacial Secreta! 🚀', content: '¡Felicidades! Has comenzado la gran aventura del tesoro. ¡Revisa debajo de tu almohada o tu escritorio!', mediaUrl: '', mediaType: 'TEXT' },
+      { dayNumber: 2, title: '¡Día 2: Trivia de Superhéroes! 🦸‍♂️', content: 'Responde correctamente para ganar tu primer sticker mágico:', mediaUrl: '', mediaType: 'QUIZ', quizData: { question: '¿Cuál es el superpoder más genial del universo?', options: ['Volar a la luna 🚀', 'Súper velocidad ⚡', 'Invisibilidad 🔮', '¡Todos los anteriores! 🎉'], correctIndex: 3 } },
+      { dayNumber: 3, title: '¡Día 3: Premio de Valentía! 🦖', content: '¡Felicidades por ser una persona súper valiente y genial hoy! 🏆⭐', mediaUrl: '', mediaType: 'TEXT' },
+    ]);
+  };
+
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
       {/* Wizard Header / Stepper */}
@@ -143,6 +157,17 @@ export const CreatorWizard: React.FC = () => {
         <p className="text-slate-400 text-sm mt-2 max-w-lg mx-auto">
           Diseña sorpresas digitales interactivas, calendarios de adviento o cápsulas del tiempo para compartir mediante un enlace único.
         </p>
+
+        {/* Quick Kids Preset Banner */}
+        <div className="mt-4">
+          <button
+            type="button"
+            onClick={handleApplyKidsPreset}
+            className="px-5 py-2.5 bg-gradient-to-r from-amber-400 via-pink-500 to-cyan-400 text-slate-950 rounded-2xl text-xs font-black shadow-lg shadow-pink-500/20 hover:scale-105 transition-all flex items-center justify-center gap-2 mx-auto font-kids border-2 border-yellow-300"
+          >
+            <span>✨ ¡Cargar Plantilla Mágica para Niños! (1-Clic) 🎈</span>
+          </button>
+        </div>
 
         {/* Stepper Dots */}
         <div className="flex items-center justify-center gap-3 sm:gap-6 mt-8">

@@ -2,8 +2,9 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Lock, Gift, Sparkles, Check, Heart } from 'lucide-react';
+import { Lock, Gift, Sparkles, Check, Heart, Rocket, Star } from 'lucide-react';
 import { MediaModal } from './MediaModal';
+import { playMagicChimeSound } from '@/lib/sound';
 
 export interface AdventItem {
   id: string;
@@ -37,11 +38,12 @@ export const AdventGrid: React.FC<AdventGridProps> = ({
 
   const handleOpenDay = (item: AdventItem) => {
     if (item.isLocked) return;
+    playMagicChimeSound();
     setOpenedDays((prev) => ({ ...prev, [item.dayNumber]: true }));
     setSelectedItem(item);
   };
 
-  const KIDS_STICKERS = ['⭐', '🚀', '🎈', '🎨', '🦄', '🦸‍♂️', '🎮', '🏆', '🍦', '🦖', '💥', '🌟'];
+  const KIDS_STICKERS = ['⭐', '🚀', '🎈', '🎨', '🦄', '🦸‍♂️', '🎮', '🏆', '🍦', '🦖', '💥', '🌟', '🍭', '👑', '🔮'];
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-10">
@@ -75,42 +77,51 @@ export const AdventGrid: React.FC<AdventGridProps> = ({
           return (
             <motion.div
               key={item.id || item.dayNumber}
-              whileHover={!isLocked ? { scale: 1.05, rotate: 1 } : { scale: 0.98 }}
-              whileTap={!isLocked ? { scale: 0.95 } : {}}
+              whileHover={!isLocked ? { scale: theme === 'kids' ? 1.12 : 1.05, rotate: theme === 'kids' ? [-2, 3, 0] : 1 } : { scale: 0.98 }}
+              whileTap={!isLocked ? { scale: 0.92 } : {}}
               className="relative aspect-square"
             >
               <button
                 type="button"
                 onClick={() => handleOpenDay(item)}
                 disabled={isLocked}
-                className={`w-full h-full rounded-2xl p-4 flex flex-col items-center justify-between border-2 transition-all duration-300 shadow-xl overflow-hidden ${
+                className={`w-full h-full rounded-3xl p-4 flex flex-col items-center justify-between border-4 transition-all duration-300 shadow-2xl overflow-hidden ${
                   isLocked
-                    ? 'border-white/10 bg-slate-900/40 text-slate-500 cursor-not-allowed opacity-60'
+                    ? 'border-slate-800 bg-slate-950/70 text-slate-600 cursor-not-allowed opacity-60'
                     : isOpened
-                    ? 'border-amber-400 bg-gradient-to-br from-amber-500/20 via-slate-900 to-indigo-950 text-amber-300 shadow-amber-500/20 ring-2 ring-amber-400/40'
+                    ? theme === 'kids'
+                      ? 'border-yellow-400 bg-gradient-to-br from-amber-400/30 via-pink-900 to-cyan-950 text-yellow-300 shadow-yellow-500/30 ring-4 ring-yellow-400/50'
+                      : 'border-amber-400 bg-gradient-to-br from-amber-500/20 via-slate-900 to-indigo-950 text-amber-300 shadow-amber-500/20 ring-2 ring-amber-400/40'
+                    : theme === 'kids'
+                    ? 'border-pink-500 bg-gradient-to-br from-purple-900 via-indigo-950 to-pink-950 text-white shadow-pink-500/30 hover:border-yellow-300 hover:shadow-cyan-500/50'
                     : 'border-indigo-500/40 bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 text-white hover:border-amber-400 hover:shadow-indigo-500/30'
                 }`}
               >
                 <div className="w-full flex items-center justify-between">
-                  <span className="text-xs font-black tracking-widest text-slate-400 uppercase">
-                    DÍA
+                  <span className={`text-xs font-black tracking-widest uppercase ${theme === 'kids' ? 'text-amber-300 font-kids' : 'text-slate-400'}`}>
+                    {theme === 'kids' ? 'DÍA' : 'DÍA'}
                   </span>
                   {isLocked ? (
                     <Lock className="w-4 h-4 text-slate-500" />
                   ) : isOpened ? (
                     <Check className="w-4 h-4 text-emerald-400" />
                   ) : (
-                    <Sparkles className="w-4 h-4 text-amber-400 animate-pulse" />
+                    <Sparkles className="w-4 h-4 text-amber-400 animate-bounce" />
                   )}
                 </div>
 
                 <div className="my-auto text-center">
-                  <span className="text-3xl sm:text-4xl font-extrabold font-heading block">
+                  {theme === 'kids' && (
+                    <span className="text-xl block mb-0.5 animate-pulse">
+                      {KIDS_STICKERS[(item.dayNumber - 1) % KIDS_STICKERS.length]}
+                    </span>
+                  )}
+                  <span className={`text-3xl sm:text-4xl font-extrabold block ${theme === 'kids' ? 'font-kids text-amber-300 drop-shadow' : 'font-heading text-white'}`}>
                     {item.dayNumber}
                   </span>
                   {!isLocked && (
-                    <span className="text-[10px] font-semibold text-amber-300 tracking-wider uppercase block mt-1">
-                      {isOpened ? 'Abierto' : '¡Abrir!'}
+                    <span className={`text-[10px] font-bold tracking-wider uppercase block mt-1 ${theme === 'kids' ? 'text-cyan-300 font-kids bg-cyan-950/80 px-2 py-0.5 rounded-full border border-cyan-400/50' : 'text-amber-300'}`}>
+                      {isOpened ? '¡Revelado!' : '¡Tocar aquí!'}
                     </span>
                   )}
                 </div>
@@ -119,7 +130,7 @@ export const AdventGrid: React.FC<AdventGridProps> = ({
                   {isLocked ? (
                     <span className="text-[9px] text-slate-500 font-medium">Bloqueado</span>
                   ) : (
-                    <Gift className="w-5 h-5 text-amber-400" />
+                    <Gift className={`w-5 h-5 ${theme === 'kids' ? 'text-pink-400 animate-bounce' : 'text-amber-400'}`} />
                   )}
                 </div>
               </button>

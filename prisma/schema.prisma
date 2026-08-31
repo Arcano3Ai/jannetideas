@@ -1,0 +1,45 @@
+// Prisma Schema for Momentum Platform
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Experience {
+  id            String           @id @default(uuid())
+  token         String           @unique
+  type          String           // ADVENT | TIME_CAPSULE | GREETING_CARD
+  title         String
+  subtitle      String?
+  senderName    String
+  recipientName String
+  coverUrl      String?
+  theme         String           @default("minimalist") // minimalist | festive | romantic | party
+  targetDate    DateTime?        // Unlock date for Time Capsule or Advent start date
+  settings      String?          // JSON string for additional settings (music, confidential, etc)
+  createdAt     DateTime         @default(now())
+  updatedAt     DateTime         @updatedAt
+  items         ExperienceItem[]
+
+  @@index([token])
+}
+
+model ExperienceItem {
+  id           String     @id @default(uuid())
+  experienceId String
+  experience   Experience @relation(fields: [experienceId], references: [id], onDelete: Cascade)
+  dayNumber    Int?       // Day index for Advent (1..24), null for Capsule/Card
+  title        String?
+  content      String?    // Letter, note, secret message
+  mediaUrl     String?    // Image, video, or voice recording URL
+  mediaType    String?    // IMAGE | VIDEO | AUDIO | QUIZ | TEXT
+  unlockDate   DateTime?  // Specific unlock timestamp for this item
+  quizData     String?    // JSON string storing mini-quiz or trivia questions
+  createdAt    DateTime   @default(now())
+
+  @@index([experienceId])
+}

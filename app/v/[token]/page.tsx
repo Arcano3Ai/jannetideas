@@ -82,7 +82,7 @@ export default function ExperienceViewerPage({ params }: ViewerPageProps) {
   } else if (data.theme === 'party') {
     themeBg = 'bg-gradient-to-br from-slate-950 via-purple-950 to-slate-950';
   } else if (data.theme === 'kids') {
-    themeBg = 'bg-gradient-to-br from-purple-950 via-pink-950 via-indigo-950 to-cyan-950 bg-kids-pattern';
+    themeBg = 'bg-gradient-to-b from-sky-400 via-pink-400 via-amber-300 to-purple-600 bg-kids-pattern text-slate-900';
   }
 
   return (

@@ -13,6 +13,7 @@ interface ThemeOption {
   gradient: string;
   borderAccent: string;
   bgPreview: string;
+  previewImage?: string;
 }
 
 export const THEMES: ThemeOption[] = [
@@ -54,12 +55,13 @@ export const THEMES: ThemeOption[] = [
   },
   {
     id: 'kids',
-    name: 'Mundo Mágico & Niños',
-    description: 'Aventura infantil, superhéroes, estrellas, magia y stickers divertidos.',
+    name: 'Mundo Mágico & Niños 🎈',
+    description: 'Aventura infantil, globos 3D, superhéroes, estrellas y stickers divertidos.',
     icon: Rocket,
-    gradient: 'from-amber-950 via-cyan-950 to-pink-950',
-    borderAccent: 'border-amber-400',
-    bgPreview: 'bg-amber-500 text-slate-950',
+    gradient: 'from-amber-400 via-pink-500 to-cyan-400',
+    borderAccent: 'border-yellow-300',
+    bgPreview: 'bg-yellow-400 text-slate-950 font-bold',
+    previewImage: '/images/kids_party_balloons.jpg',
   },
 ];
 
@@ -107,6 +109,11 @@ export const ThemeSelector: React.FC<ThemeSelectorProps> = ({
                 <p className="text-slate-400 text-xs mt-1 leading-relaxed">
                   {theme.description}
                 </p>
+                {theme.previewImage && (
+                  <div className="mt-3 rounded-xl overflow-hidden border-2 border-yellow-300 shadow-md">
+                    <img src={theme.previewImage} alt={theme.name} className="w-full h-24 object-cover" />
+                  </div>
+                )}
               </div>
             </div>
           </button>

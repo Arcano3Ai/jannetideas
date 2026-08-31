@@ -47,23 +47,37 @@ export const AdventGrid: React.FC<AdventGridProps> = ({
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-10">
+      {/* Kids Theme Banner Showcase */}
+      {theme === 'kids' && (
+        <div className="mb-8 relative max-w-lg mx-auto rounded-3xl overflow-hidden border-4 border-yellow-300 shadow-2xl shadow-pink-500/50 transform hover:scale-105 transition-transform bg-white/90">
+          <img src="/images/kids_party_balloons.jpg" alt="Fiesta de Globos 3D" className="w-full h-48 sm:h-56 object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent flex items-end justify-center p-4">
+            <span className="text-sm font-black font-kids text-amber-300 bg-purple-950/80 px-4 py-1.5 rounded-full border border-amber-300 shadow-lg">
+              🎈 ¡Mundo Mágico de Sorpresas & Globos 3D! 🚀
+            </span>
+          </div>
+        </div>
+      )}
+
       {/* Header Greeting Card Banner */}
       <div className="text-center mb-12 space-y-3">
         <div className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold ${
           theme === 'kids'
-            ? 'bg-amber-400 text-slate-950 font-bold border-2 border-amber-300 shadow-lg shadow-amber-500/30'
+            ? 'bg-yellow-300 text-slate-950 font-black border-4 border-amber-400 shadow-xl shadow-yellow-400/40 font-kids scale-105'
             : 'bg-amber-500/10 border border-amber-500/30 text-amber-300'
         }`}>
           <Sparkles className="w-4 h-4" />
           {theme === 'kids' ? '🚀 Aventura Infantil de Sorpresas 🎈' : 'Calendario Especial de Sorpresas'}
         </div>
-        <h1 className={`text-3xl sm:text-5xl font-extrabold tracking-tight font-heading ${
-          theme === 'kids' ? 'text-amber-300 drop-shadow-md' : 'text-white'
+        <h1 className={`text-3xl sm:text-5xl font-extrabold tracking-tight ${
+          theme === 'kids' ? 'text-yellow-300 font-kids drop-shadow-[0_4px_10px_rgba(0,0,0,0.5)]' : 'text-white font-heading'
         }`}>
           {title}
         </h1>
-        <p className="text-slate-200 text-sm sm:text-base max-w-xl mx-auto">
-          Un viaje lleno de magia preparado por <span className="font-bold text-amber-300">{senderName}</span> para{' '}
+        <p className={`text-sm sm:text-base max-w-xl mx-auto font-medium ${
+          theme === 'kids' ? 'text-white font-kids bg-purple-950/80 px-4 py-2 rounded-2xl border-2 border-yellow-300 shadow-lg' : 'text-slate-200'
+        }`}>
+          ¡Un regalo mágico preparado por <span className="font-bold text-yellow-300">{senderName}</span> para{' '}
           <span className="font-bold text-cyan-300">{recipientName}</span>! 🌟
         </p>
       </div>
@@ -77,8 +91,8 @@ export const AdventGrid: React.FC<AdventGridProps> = ({
           return (
             <motion.div
               key={item.id || item.dayNumber}
-              whileHover={!isLocked ? { scale: theme === 'kids' ? 1.12 : 1.05, rotate: theme === 'kids' ? [-2, 3, 0] : 1 } : { scale: 0.98 }}
-              whileTap={!isLocked ? { scale: 0.92 } : {}}
+              whileHover={!isLocked ? { scale: theme === 'kids' ? 1.15 : 1.05, rotate: theme === 'kids' ? [-3, 3, 0] : 1 } : { scale: 0.98 }}
+              whileTap={!isLocked ? { scale: 0.9 } : {}}
               className="relative aspect-square"
             >
               <button
@@ -90,10 +104,10 @@ export const AdventGrid: React.FC<AdventGridProps> = ({
                     ? 'border-slate-800 bg-slate-950/70 text-slate-600 cursor-not-allowed opacity-60'
                     : isOpened
                     ? theme === 'kids'
-                      ? 'border-yellow-400 bg-gradient-to-br from-amber-400/30 via-pink-900 to-cyan-950 text-yellow-300 shadow-yellow-500/30 ring-4 ring-yellow-400/50'
+                      ? 'border-yellow-300 bg-gradient-to-br from-yellow-300 via-pink-500 to-cyan-400 text-slate-950 shadow-yellow-400/50 ring-4 ring-yellow-300'
                       : 'border-amber-400 bg-gradient-to-br from-amber-500/20 via-slate-900 to-indigo-950 text-amber-300 shadow-amber-500/20 ring-2 ring-amber-400/40'
                     : theme === 'kids'
-                    ? 'border-pink-500 bg-gradient-to-br from-purple-900 via-indigo-950 to-pink-950 text-white shadow-pink-500/30 hover:border-yellow-300 hover:shadow-cyan-500/50'
+                    ? 'border-yellow-300 bg-gradient-to-br from-pink-500 via-purple-600 to-cyan-500 text-white shadow-xl shadow-pink-500/40 hover:border-yellow-200 hover:shadow-cyan-400/60 btn-kids-toy'
                     : 'border-indigo-500/40 bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 text-white hover:border-amber-400 hover:shadow-indigo-500/30'
                 }`}
               >

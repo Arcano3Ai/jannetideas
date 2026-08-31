@@ -1,9 +1,9 @@
 'use client';
 
 import React from 'react';
-import { Sparkles, Heart, Gift, PartyPopper } from 'lucide-react';
+import { Sparkles, Heart, Gift, PartyPopper, Rocket } from 'lucide-react';
 
-export type ThemeType = 'minimalist' | 'festive' | 'romantic' | 'party';
+export type ThemeType = 'minimalist' | 'festive' | 'romantic' | 'party' | 'kids';
 
 interface ThemeOption {
   id: ThemeType;
@@ -51,6 +51,15 @@ export const THEMES: ThemeOption[] = [
     gradient: 'from-purple-950 via-slate-900 to-pink-950',
     borderAccent: 'border-purple-400',
     bgPreview: 'bg-purple-900 text-pink-300',
+  },
+  {
+    id: 'kids',
+    name: 'Mundo Mágico & Niños',
+    description: 'Aventura infantil, superhéroes, estrellas, magia y stickers divertidos.',
+    icon: Rocket,
+    gradient: 'from-amber-950 via-cyan-950 to-pink-950',
+    borderAccent: 'border-amber-400',
+    bgPreview: 'bg-amber-500 text-slate-950',
   },
 ];
 

@@ -80,6 +80,8 @@ export default function ExperienceViewerPage({ params }: ViewerPageProps) {
     themeBg = 'bg-gradient-to-br from-slate-950 via-rose-950 to-slate-950';
   } else if (data.theme === 'party') {
     themeBg = 'bg-gradient-to-br from-slate-950 via-purple-950 to-slate-950';
+  } else if (data.theme === 'kids') {
+    themeBg = 'bg-gradient-to-br from-indigo-950 via-amber-950 via-pink-950 to-cyan-950';
   }
 
   return (

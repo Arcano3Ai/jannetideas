@@ -34,6 +34,14 @@ const config: Config = {
           purple: '#a855f7',
           neonPink: '#ec4899',
           amber: '#f59e0b',
+        },
+        kids: {
+          yellow: '#fbbf24',
+          cyan: '#06b6d4',
+          lime: '#84cc16',
+          pink: '#f472b6',
+          purple: '#c084fc',
+          sky: '#38bdf8',
         }
       },
       fontFamily: {

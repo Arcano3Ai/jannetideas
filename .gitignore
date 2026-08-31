@@ -35,3 +35,5 @@ prisma/dev.db
 # User Uploads
 public/uploads/*
 !public/uploads/.gitkeep
+
+.vercel

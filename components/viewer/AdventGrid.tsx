@@ -41,20 +41,28 @@ export const AdventGrid: React.FC<AdventGridProps> = ({
     setSelectedItem(item);
   };
 
+  const KIDS_STICKERS = ['⭐', '🚀', '🎈', '🎨', '🦄', '🦸‍♂️', '🎮', '🏆', '🍦', '🦖', '💥', '🌟'];
+
   return (
     <div className="max-w-5xl mx-auto px-4 py-10">
       {/* Header Greeting Card Banner */}
       <div className="text-center mb-12 space-y-3">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-semibold">
+        <div className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold ${
+          theme === 'kids'
+            ? 'bg-amber-400 text-slate-950 font-bold border-2 border-amber-300 shadow-lg shadow-amber-500/30'
+            : 'bg-amber-500/10 border border-amber-500/30 text-amber-300'
+        }`}>
           <Sparkles className="w-4 h-4" />
-          Calendario Especial de Sorpresas
+          {theme === 'kids' ? '🚀 Aventura Infantil de Sorpresas 🎈' : 'Calendario Especial de Sorpresas'}
         </div>
-        <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight font-heading">
+        <h1 className={`text-3xl sm:text-5xl font-extrabold tracking-tight font-heading ${
+          theme === 'kids' ? 'text-amber-300 drop-shadow-md' : 'text-white'
+        }`}>
           {title}
         </h1>
-        <p className="text-slate-300 text-sm sm:text-base max-w-xl mx-auto">
-          Un regalo especial preparado por <span className="font-bold text-amber-300">{senderName}</span> para{' '}
-          <span className="font-bold text-indigo-300">{recipientName}</span>.
+        <p className="text-slate-200 text-sm sm:text-base max-w-xl mx-auto">
+          Un viaje lleno de magia preparado por <span className="font-bold text-amber-300">{senderName}</span> para{' '}
+          <span className="font-bold text-cyan-300">{recipientName}</span>! 🌟
         </p>
       </div>
 
